@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: |
+      yarn install
+      gp sync-done lock
+    command: echo "Welcome to the project :) everythig is installed"
+    name: Install Dependencies
+  - init: |
+      gp sync-await lock
+      yarn create redwood-app test-app
+      cd test-app
+      yarn
+    command: echo "This is a test project we have configured to test changes in! Good Luck! :)"
+    openMode: split-right
+    name: Test App
